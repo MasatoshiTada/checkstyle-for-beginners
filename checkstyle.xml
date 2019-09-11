@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name = "Checker">
+    <property name="charset" value="UTF-8"/>
+
+    <property name="severity" value="warning"/>
+
+    <property name="fileExtensions" value="java"/>
+
+    <!--========================================================================== タブ禁止 -->
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true"/>
+        <message key="containsTab"
+                 value="タブは禁止です。半角スペース4つに変更してください"/>
+        <message key="file.containsTab"
+                 value="タブは禁止です。半角スペース4つに変更してください"/>
+    </module>
+
+    <module name="TreeWalker">
+        <!--========================================================================== ファイル・クラス -->
+        <module name="OuterTypeFilename">
+            <message key="type.file.mismatch"
+                     value="クラス名はファイル名と一致させてください"/>
+        </module>
+        <module name="OneTopLevelClass">
+            <message key="one.top.level.class"
+                     value="1ファイルにつき1クラスにしてください"/>
+        </module>
+
+        <!--========================================================================== import -->
+        <module name="AvoidStarImport">
+            <property name="allowStaticMemberImports" value="true"/>
+            <message key="import.avoidStar"
+                     value="「*」を利用したimportは禁止です（static importを除く）"/>
+        </module>
+        <module name="UnusedImports">
+            <message key="import.unused"
+                     value="不要なimport文は削除してください"/>
+        </module>
+
+        <!--========================================================================== {} -->
+        <module name="NeedBraces">
+            <property name="allowSingleLineStatement" value="false"/>
+            <property name="allowEmptyLoopBody" value="false"/>
+            <message key="needBraces"
+                     value="'{' または '}' が必要です"/>
+        </module>
+
+        <!--========================================================================== 複数行に渡る空行の禁止 -->
+        <module name="EmptyLineSeparator">
+            <property name="allowMultipleEmptyLines" value="false"/>
+            <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
+            <message key="empty.line.separator"
+                     value="''{0}'' は前の行との間に空行が必要です"/>
+            <message key="empty.line.separator.multiple.lines"
+                     value="前の行との間の空行は1行までです"/>
+            <message key="empty.line.separator.multiple.lines.after"
+                     value="後の行との間の空行は1行までです"/>
+            <message key="empty.line.separator.multiple.lines.inside"
+                     value="前の行との間の空行は1行までです"/>
+        </module>
+
+        <!--========================================================================== インデント・スペース -->
+        <module name="Indentation">
+            <property name="basicOffset" value="4"/>
+            <property name="braceAdjustment" value="0"/>
+            <property name="caseIndent" value="4"/>
+            <property name="throwsIndent" value="4"/>
+            <property name="arrayInitIndent" value="4"/>
+            <property name="lineWrappingIndentation" value="4"/>
+            <property name="forceStrictCondition" value="false"/>
+            <message key="indentation.child.error"
+                     value="インデントは半角スペース4つです"/>
+            <message key="indentation.child.error.multi"
+                     value="インデントは半角スペース4つです"/>
+            <message key="indentation.error"
+                     value="インデントは半角スペース4つです"/>
+            <message key="indentation.error.multi"
+                     value="インデントは半角スペース4つです"/>
+        </module>
+        <module name="WhitespaceAround">
+            <property name="allowEmptyConstructors" value="true"/>
+            <property name="allowEmptyLambdas" value="true"/>
+            <property name="allowEmptyMethods" value="true"/>
+            <property name="allowEmptyTypes" value="true"/>
+            <property name="allowEmptyLoops" value="true"/>
+            <message key="ws.notFollowed"
+                     value="''{0}'' の後には半角スペースが必要です"/>
+            <message key="ws.notPreceded"
+                     value="''{0}'' の前には半角スペースが必要です"/>
+        </module>
+        <module name="NoWhitespaceBefore">
+            <property name="tokens"
+                      value="COMMA, SEMI, POST_INC, POST_DEC, DOT, ELLIPSIS, METHOD_REF"/>
+            <property name="allowLineBreaks" value="true"/>
+            <message key="ws.preceded"
+                     value="''{0}'' の前の半角スペースは禁止です"/>
+        </module>
+
+        <!--========================================================================== 命名規約 -->
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9_]*)*$"/>
+            <message key="name.invalidPattern"
+                     value="パッケージ名は半角英小文字で始まり、2文字目以降は半角英数・アンダースコアのみです"/>
+        </module>
+        <module name="TypeName">
+            <message key="name.invalidPattern"
+                     value="型名は半角英大文字で始まり、2文字目以降は半角英数のみです"/>
+        </module>
+        <module name="MemberName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+            <message key="name.invalidPattern"
+                     value="メンバー名は半角英小文字で始まり、2文字目以降は半角英数のみです"/>
+        </module>
+        <module name="ParameterName">
+            <property name="format" value="^[a-z]([a-zA-Z0-9]*)?$"/>
+            <message key="name.invalidPattern"
+                     value="引数名は半角英小文字で始まり、2文字目以降は半角英数のみです"/>
+        </module>
+        <module name="LambdaParameterName">
+            <property name="format" value="^[a-z]([a-zA-Z0-9]*)?$"/>
+            <message key="name.invalidPattern"
+                     value="ラムダ式の引数名は半角英小文字で始まり、2文字目以降は半角英数のみです"/>
+        </module>
+        <module name="CatchParameterName">
+            <property name="format" value="^[a-z]([a-zA-Z0-9]*)?$"/>
+            <message key="name.invalidPattern"
+                     value="catch節の引数名は半角英小文字で始まり、2文字目以降は半角英数のみです"/>
+        </module>
+        <module name="LocalVariableName">
+            <property name="tokens" value="VARIABLE_DEF"/>
+            <property name="format" value="^[a-z]([a-zA-Z0-9]*)?$"/>
+            <message key="name.invalidPattern"
+                     value="ローカル変数名は半角英小文字で始まり、2文字目以降は半角英数のみです"/>
+        </module>
+        <module name="ClassTypeParameterName">
+            <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+            <message key="name.invalidPattern"
+                     value="クラス名は半角英大文字で始まり、2文字目以降は半角英数のみです"/>
+        </module>
+        <module name="MethodName">
+            <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+            <message key="name.invalidPattern"
+                     value="メソッド名は半角英小文字で始まり、2文字目以降は半角英数のみです"/>
+        </module>
+    </module>
+</module>
