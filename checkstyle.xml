@@ -99,6 +99,13 @@
             <message key="ws.preceded"
                      value="''{0}'' の前の半角スペースは禁止です"/>
         </module>
+        <module name="WhitespaceAfter">
+            <property name="tokens" value="COMMA, SEMI, TYPECAST, LITERAL_IF, LITERAL_ELSE, LITERAL_WHILE, LITERAL_DO, LITERAL_FOR, DO_WHILE"/>
+            <message key="ws.notFollowed"
+                     value="''{0}'' の後には半角スペースが必要です"/>
+            <message key="ws.typeCast"
+                     value="型変換（キャスト）の後には半角スペースが必要です"/>
+        </module>
 
         <!--========================================================================== 命名規約 -->
         <module name="PackageName">
